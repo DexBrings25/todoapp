@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/demo")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "${todoapp.frontend.url}")
 public class HelloWorldcontroller {
 	
 	@GetMapping("/hello")

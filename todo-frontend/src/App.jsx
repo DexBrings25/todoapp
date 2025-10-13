@@ -3,12 +3,13 @@ import './App.css'
 
 function App() {
   const [message, setMessage] = useState("")
+  const link = import.meta.env.VITE_TODOAPP_BACKEND_URL
   
   useEffect(() => {
-	fetch("http://localhost:8080/api/demo/hello")
+	fetch(link)
 	.then(response => response.text())
 	.then(data => setMessage(data))
-  }, [])
+  })
 
   return (
     <>
