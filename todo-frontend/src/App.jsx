@@ -1,21 +1,24 @@
-import { useState, useEffect } from 'react'
 import './App.css'
+import {BrowserRouter as Router, Routes, Route, Link} from 'react-router-dom'
+
+import Home from './pages/Home'
+import Register from './pages/Register'
 
 function App() {
-  const [message, setMessage] = useState("")
-  const link = import.meta.env.VITE_TODOAPP_BACKEND_URL
   
-  useEffect(() => {
-	fetch(link)
-	.then(response => response.text())
-	.then(data => setMessage(data))
-  })
-
   return (
     <>
       <div>
-	  	<h1>React ToDo-App</h1>
-		<p>{message}</p>
+	  	  <h1>ToDo-App</h1>
+        <Router>
+          <nav>
+            <Link to="/">Start/Login</Link> | <Link to="/register">Registrierung</Link>
+          </nav>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="register" element={<Register />} />
+        </Routes>
+       </Router>
 	  </div>
     </>
   )
